@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -9,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
@@ -16,7 +19,17 @@ class User extends Authenticatable
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
+    use Searchable;
     use TwoFactorAuthenticatable;
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = [
+        'profile_photo_url',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -41,20 +54,11 @@ class User extends Authenticatable
         'two_factor_secret',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+    public function searchableAs(): string
+    {
+        return 'users';
+    }
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Laravel\Telescope\Http\Middleware\Authorize;
 use Laravel\Telescope\Watchers;
 
@@ -62,7 +64,7 @@ return [
     |
     */
 
-    'enabled' => env('TELESCOPE_ENABLED', true),
+    'enabled' => env('TELESCOPE_ENABLED', false),
 
     /*
     |--------------------------------------------------------------------------
