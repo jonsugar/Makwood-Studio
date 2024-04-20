@@ -1,0 +1,24 @@
+{
+	"name": "makwood-studio/project",
+	"description": "",
+	"type": "library",
+	"version": "1.0",
+	"license": "proprietary",
+	"require": {},
+	"autoload": {
+		"psr-4": {
+			"MakwoodStudio\\Project\\": "src/",
+			"MakwoodStudio\\Project\\Tests\\": "tests/",
+			"MakwoodStudio\\Project\\Database\\Factories\\": "database/factories/",
+			"MakwoodStudio\\Project\\Database\\Seeders\\": "database/seeders/"
+		}
+	},
+	"minimum-stability": "stable",
+	"extra": {
+		"laravel": {
+			"providers": [
+				"MakwoodStudio\\Project\\Providers\\ProjectServiceProvider"
+			]
+		}
+	}
+}
